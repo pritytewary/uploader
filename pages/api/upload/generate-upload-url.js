@@ -6,9 +6,7 @@ import HttpError from "http-errors";
 async function generateUploadUrlApi(req, res) {
   const token = req.cookies.token;
   const user = verifyUser(token);
-  if (!user) {
-    ("user is unauthorized");
-  }
+  
 
   const { contentType, extension = "bin" } = req.body;
 
