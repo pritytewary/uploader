@@ -7,8 +7,7 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loading,setLoading] = useState(false)
-  const [error, setError] = useState("");
+   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +15,7 @@ const SignUp = () => {
       setError("All feilds are Necessery");
       return;
     }
- setLoading(true);
+
   
     
     try {
@@ -39,9 +38,7 @@ const SignUp = () => {
       }
     } catch (error) {
       console.log("Error during Registration", error);
-    } finally{
-      setLoading(false)
-    }
+    } 
   };
 
   return (
@@ -82,9 +79,9 @@ const SignUp = () => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
-            disabled={loading}
+          
           >
-            {loading ? "signing Up..." : "Sign Up"}
+            Sign Up
           </button>
 
           {error && (
