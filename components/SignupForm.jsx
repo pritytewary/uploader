@@ -84,7 +84,7 @@ const SignUp = () => {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Siging Up" : "Sign Up"}
+            {loading ? "Signing Up" : "Sign Up"}
           </button>
 
           {error && (
