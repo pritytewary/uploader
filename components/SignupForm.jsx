@@ -80,10 +80,11 @@ const SignUp = () => {
           </div>
 
           <button
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
             type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? "signing Up..." : "Sign Up"}
           </button>
 
           {error && (
