@@ -7,7 +7,8 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,9 +16,8 @@ const SignUp = () => {
       setError("All feilds are Necessery");
       return;
     }
-
-  
-    
+    setLoading(true);
+    setError("");
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -32,13 +32,16 @@ const SignUp = () => {
         setName("");
         setUsername("");
         setPassword("");
+        alert("User Registered");
         console.log("User Registration Successfully");
       } else {
         console.log("User Registration Failed");
       }
     } catch (error) {
       console.log("Error during Registration", error);
-    } 
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -77,11 +80,11 @@ const SignUp = () => {
           </div>
 
           <button
-            type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
-          
+            type="submit"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? "Siging Up" : "Sign Up"}
           </button>
 
           {error && (

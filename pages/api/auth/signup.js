@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import HttpError from "http-errors";
 
 async function signupApi(req, res) {
-  const {name, username, password } = req.body;
+  const { name, username, password } = req.body;
 
   const existingUser = await User.findOne({ username });
 
@@ -14,14 +14,11 @@ async function signupApi(req, res) {
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
- 
 
   const user = await User.create({
     name,
     username,
-
     password: hashedPassword,
- 
   });
 
   res.status(201).json({
