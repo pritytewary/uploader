@@ -17,7 +17,7 @@ const SignUp = () => {
       return;
     }
  setLoading(true);
-    setError("");
+  
     
     try {
       const res = await fetch("/api/auth/signup", {
