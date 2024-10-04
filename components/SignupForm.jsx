@@ -7,6 +7,7 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading,setLoading] = useState(false)
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -15,6 +16,9 @@ const SignUp = () => {
       setError("All feilds are Necessery");
       return;
     }
+ setLoading(true);
+    setError("");
+    
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -35,6 +39,8 @@ const SignUp = () => {
       }
     } catch (error) {
       console.log("Error during Registration", error);
+    } finally{
+      setLoading(false)
     }
   };
 
